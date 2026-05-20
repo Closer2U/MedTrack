@@ -1,0 +1,17 @@
+{
+  "name": "MedTracker",
+  "short_name": "MedTracker",
+  "description": "Track medications, stock levels and refill dates",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f3ee",
+  "theme_color": "#2d6a4f",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

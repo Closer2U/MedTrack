@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Track medication stock and refill dates — works fully offline">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MedTracker">
+  <link rel="apple-touch-icon" href="./icons/icon.svg">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>MedTracker</title>
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <div class="header-top">
+      <span class="header-logo">Med<span>Tracker</span></span>
+    </div>
+    <nav aria-label="Main navigation">
+      <button class="nav__btn" data-nav="calendar"    >📅 Calendar</button>
+      <button class="nav__btn" data-nav="medications" >💊 Medications</button>
+      <button class="nav__btn" data-nav="formulary"   >🗂 Database</button>
+      <button class="nav__btn" data-nav="refills"     >📋 Refills</button>
+      <button class="nav__btn" data-nav="doctors"     >👨‍⚕️ Doctors</button>
+      <button class="nav__btn" data-nav="settings"    >⚙ Settings</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- CALENDAR -->
+    <div id="view-calendar" class="view">
+      <div class="calendar-layout">
+        <div>
+          <div class="calendar-nav">
+            <button class="cal-nav-btn" id="btn-prev-month" aria-label="Previous month">‹</button>
+            <span class="cal-month-label" id="month-label"></span>
+            <button class="cal-nav-btn" id="btn-next-month" aria-label="Next month">›</button>
+          </div>
+          <div class="cal-legend">
+            <span class="cal-legend-item"><span class="cal-legend-swatch" style="background:var(--warn-lt);border:1px solid var(--warn)"></span> Refill window</span>
+            <span class="cal-legend-item"><span class="cal-legend-swatch" style="background:#fdecea;border:1px solid var(--danger)"></span> Est. run-out</span>
+            <span class="cal-legend-item"><span class="cal-legend-swatch" style="background:var(--myvac)"></span> 🌴 My vacation</span>
+            <span class="cal-legend-item"><span class="cal-legend-swatch" style="background:var(--drvac)"></span> 🏥 Doctor away</span>
+            <span class="cal-legend-item">📌 Appointment</span>
+          </div>
+          <div class="calendar-grid" id="calendar-grid" role="grid"></div>
+        </div>
+        <aside>
+          <div class="sidebar-card">
+            <div class="sidebar-title">Upcoming run-outs</div>
+            <div id="sidebar-runouts"></div>
+            <div class="sidebar-btn-row">
+              <button class="btn btn--ghost btn--sm" id="btn-quick-refill">+ Log refill</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- MEDICATIONS -->
+    <div id="view-medications" class="view"></div>
+
+    <!-- FORMULARY / DATABASE -->
+    <div id="view-formulary" class="view"></div>
+
+    <!-- REFILLS -->
+    <div id="view-refills" class="view"></div>
+
+    <!-- DOCTORS -->
+    <div id="view-doctors" class="view"></div>
+
+    <!-- SETTINGS -->
+    <div id="view-settings" class="view"></div>
+
+  </main>
+
+  <!-- Shared modal overlay — populated dynamically -->
+  <div id="modal-overlay" class="hidden" role="dialog" aria-modal="true">
+    <div id="modal-box"></div>
+  </div>
+
+</div>
+
+<!--
+  Load order matters:
+    1. db.js    — IndexedDB helpers and store constants (S.*)
+    2. calc.js  — Pure calculation functions (uses no DOM)
+    3. app.js   — UI, views, modals (uses both above)
+-->
+<script src="./js/db.js"></script>
+<script src="./js/calc.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>
