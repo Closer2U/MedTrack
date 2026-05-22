@@ -27,7 +27,7 @@ MedTracker is built around one core problem: knowing when you will run out of me
 
 The app calculates running stocks in contrast to consumption rates and finds the earliest date you need to act — accounting for how long it takes to get a prescription, how long the pharmacy takes to fill it, weekends (which are never counted as available days), and any vacation periods for you or your doctor.
 
-_Specifically it:_
+_Specifically it does:_
 
 - **Tracks stock** for multiple medications 
 - **Projects run-out dates** and highlights a warning window on a monthly calendar
