@@ -1568,104 +1568,56 @@ async function deleteAppointment(id) {
  *                                    in a textarea the user can select-all and copy manually,
  *                                    or long-press to share via the Android share sheet.
  */
+//V7-->
 async function exportData() {
-  // Gather all data from IndexedDB
   const [formulary, medications, daily_logs, refill_logs, vacations, doctors, appointments, settings] = await Promise.all([
     dbGetAll(S.FORMULARY), dbGetAll(S.MEDICATIONS), dbGetAll(S.DAILY_LOGS),
     dbGetAll(S.REFILL_LOGS), dbGetAll(S.VACATIONS), dbGetAll(S.DOCTORS),
     dbGetAll(S.APPOINTMENTS), dbGetAll(S.SETTINGS),
   ]);
-
-  const payload = {
-    _version: 2, _exportedAt: new Date().toISOString(),
-    formulary, medications, daily_logs, refill_logs, vacations, doctors, appointments, settings,
-  };
-
-  const jsonStr  = JSON.stringify(payload, null, 2);
-  const filename = `medtracker-backup-${todayStr()}.json`;
-
-  // ── Tier 1: Blob URL (standard browsers) ────────────────────────────────
-  if (typeof URL.createObjectURL === 'function') {
-    try {
-      const blob = new Blob([jsonStr], { type: 'application/json' });
-      const url  = URL.createObjectURL(blob);
-      const a    = Object.assign(document.createElement('a'), { href: url, download: filename });
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      // Give the browser a moment to initiate the download before revoking
-      setTimeout(() => URL.revokeObjectURL(url), 3000);
-      toast('Backup downloaded');
-      return;
-    } catch (_) { /* fall through to next tier */ }
-  }
-
-  // ── Tier 2: data: URI (some Android WebViews) ────────────────────────────
-  try {
-    // encodeURIComponent handles unicode safely; data URIs work in more WebViews
-    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonStr);
-    const a = Object.assign(document.createElement('a'), { href: dataUri, download: filename });
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    toast('Backup downloaded');
-    return;
-  } catch (_) { /* fall through to copy modal */ }
-
-  // ── Tier 3: Copy modal (WebView with no download support) ────────────────
-  // Show the full JSON in a scrollable textarea. The user can:
-  //   • Tap "Copy to clipboard" (if the Clipboard API is available)
-  //   • Select All → Copy manually
-  //   • On Android: long-press → Share to save to Drive/email/etc.
-  showExportCopyModal(jsonStr, filename);
+  const payload = { _version: 2, _exportedAt: new Date().toISOString(), formulary, medications, daily_logs, refill_logs, vacations, doctors, appointments, settings };
+  showExportCopyModal(JSON.stringify(payload, null, 2), `medtracker-backup-${todayStr()}.json`);
 }
 
-/** Renders the fallback copy modal with the raw JSON */
 function showExportCopyModal(jsonStr, filename) {
   openModal(`
     <div class="modal-header">
-      <h2>Save Backup Manually</h2>
+      <h2>Export Backup</h2>
       <button class="modal-close" id="btn-modal-close">×</button>
     </div>
     <div class="modal-body">
       <p class="view-desc">
-        Automatic download is not supported in this environment.
-        Copy the text below and paste it into a text file saved as
-        <strong>${esc(filename)}</strong>, or share it to Google Drive / email.
+        Tap <strong>Copy to clipboard</strong>, then paste into any text editor and save as
+        <strong>${esc(filename)}</strong>. On Android you can also long-press the text → Share.
       </p>
-      <div style="position:relative">
-        <textarea id="export-json-area" class="input" rows="10"
-          style="font-family:monospace;font-size:.72rem;resize:vertical"
-          readonly>${esc(jsonStr)}</textarea>
-      </div>
+      <textarea id="export-json-area" class="input" rows="8"
+        style="font-family:monospace;font-size:.68rem;resize:vertical"
+        readonly>${esc(jsonStr)}</textarea>
     </div>
-    <div class="modal-footer" style="flex-wrap:wrap;gap:.5rem">
+    <div class="modal-footer">
       <button class="btn btn--ghost" id="btn-modal-close2">Close</button>
       <button class="btn btn--primary" id="btn-copy-json">📋 Copy to clipboard</button>
     </div>
   `);
 
-  // Select all text immediately so the user can see it is ready
   const area = document.getElementById('export-json-area');
   area.addEventListener('focus', () => area.select());
   area.select();
 
   document.getElementById('btn-modal-close').addEventListener('click', closeModal);
   document.getElementById('btn-modal-close2').addEventListener('click', closeModal);
-
   document.getElementById('btn-copy-json').addEventListener('click', async () => {
     try {
-      // Modern Clipboard API — works in secure contexts (https)
       await navigator.clipboard.writeText(jsonStr);
-      toast('Copied to clipboard — paste into a .json file');
     } catch (_) {
-      // Fallback: select the textarea so the user can copy manually
       area.select();
-      document.execCommand('copy'); // deprecated but widely supported in WebViews
-      toast('Copied — paste into a .json file');
+      document.execCommand('copy');
     }
+    toast('Copied — paste into a .json file to save');
   });
 }
+//<--V7
+      
 
 async function importData(file) {
   try {
