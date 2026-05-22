@@ -289,6 +289,18 @@ function renderSidebar() {
     })
     .sort((a, b) => statuses[a.id].runOut.localeCompare(statuses[b.id].runOut));
 
+   // V6 Single next-appointment indicator for the whole panel
+   const apptEl   = document.getElementById('sidebar-next-appt');
+   if (apptEl) {
+     const nextAppt = App.state.appointments
+    .filter((a) => a.date >= todayS)
+    .sort((a, b) => a.date.localeCompare(b.date))[0];
+     apptEl.textContent = nextAppt
+    ? ` ${daysBetween(todayS, nextAppt.date) === 0 ? 'appt. today' : 'next appt.: ' + daysBetween(todayS, nextAppt.date) + 'd left'}`
+    : ''; 
+    }
+    // end V6 
+   
   if (activeMeds.length === 0) {
     const hasAny = medications.some((m) => m.active && statuses[m.id]?.runOut);
     sidebar.innerHTML = hasAny
