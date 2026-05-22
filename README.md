@@ -260,11 +260,14 @@ These are not planned, just plausible directions.
 
 ## Authorship and disclaimer
 
+<details><summary>Statement</summary>
 This application was not written solely by a human. The codebase was generated through an iteractive process with an AI assistant (Claude Sonnet 4.6 free tier, by Anthropic), with the human contributor providing requirements, reviewing outputs, identifying bugs, requesting adjustments, and making targeted edits themselves. The architecture, feature decisions, and data model were developed collaboratively through that process.
 
 The code has been tested by a human, but it has not undergone formal security review, accessibility audit, or clinical validation of any kind.
 
 **This is a personal utility, a side project I developed according to my own needs, not a medical product.** It should not be used as a substitute for professional medical advice, your own time management to keep on track when medication needs restocking, or any regulated medication management system. The accuracy of all projections depends entirely on the data you put in. There might still be bugs in the code that produce wrong run-out prediction dates. Always double check if the predicted date is reasonably within the limits of how many tablets you still have in stock and how long it will take you to get a prescription and pharmacy delivery. 
+
+</details>
 
 > [!WARNING]
 > **Run-out projections are estimates.** Always verify your actual stock. This is a personal utility, not a medical product.
