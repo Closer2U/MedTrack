@@ -20,9 +20,9 @@ It runs entirely in the browser. No account, no server, no data leaves your devi
 |---|---|---|
 | ![Formulary](_screenshots/database.png) | ![Doctors](_screenshots/doctors.png) | ![Refills](_screenshots/Refills.png) |
 
-| Run-Out view | Export modal | · |
+| Run-Out view | Export modal | Settings |
 |---|---|---|
-| ![runout](_screenshots/runout.png) | ![export](_screenshots/export.png) | · |
+| ![runout](_screenshots/runout.png) | ![export](_screenshots/export.png) | ![Settings](_screenshots/sertings.png) |
 
 
 --- 
