@@ -7,7 +7,7 @@
  * To force users to get a new version, bump CACHE_NAME.
  */
 
-const CACHE_NAME = 'medtracker-v6';
+const CACHE_NAME = 'medtracker-v7';
 
 // All files that must be available offline after first visit
 const PRECACHE = [
