@@ -1568,15 +1568,28 @@ async function deleteAppointment(id) {
  *                                    in a textarea the user can select-all and copy manually,
  *                                    or long-press to share via the Android share sheet.
  */
-//V7-->
+//V7+8-->
 async function exportData() {
   const [formulary, medications, daily_logs, refill_logs, vacations, doctors, appointments, settings] = await Promise.all([
     dbGetAll(S.FORMULARY), dbGetAll(S.MEDICATIONS), dbGetAll(S.DAILY_LOGS),
     dbGetAll(S.REFILL_LOGS), dbGetAll(S.VACATIONS), dbGetAll(S.DOCTORS),
     dbGetAll(S.APPOINTMENTS), dbGetAll(S.SETTINGS),
   ]);
-  const payload = { _version: 2, _exportedAt: new Date().toISOString(), formulary, medications, daily_logs, refill_logs, vacations, doctors, appointments, settings };
-  showExportCopyModal(JSON.stringify(payload, null, 2), `medtracker-backup-${todayStr()}.json`);
+
+  const payload  = { _version: 2, _exportedAt: new Date().toISOString(), formulary, medications, daily_logs, refill_logs, vacations, doctors, appointments, settings };
+  const jsonStr  = JSON.stringify(payload, null, 2);
+  const filename = `medtracker-backup-${todayStr()}.json`;
+
+  // Attempt file download silently — works in desktop/real browsers, fails quietly in WebView
+  try {
+    const url = URL.createObjectURL(new Blob([jsonStr], { type: 'application/json' }));
+    const a   = Object.assign(document.createElement('a'), { href: url, download: filename });
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 3000);
+  } catch (_) {}
+
+  // Always show the copy modal regardless of whether download succeeded
+  showExportCopyModal(jsonStr, filename);
 }
 
 function showExportCopyModal(jsonStr, filename) {
