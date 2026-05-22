@@ -22,7 +22,7 @@ It runs entirely in the browser. No account, no server, no data leaves your devi
 
 | Run-Out view | Export modal | Settings |
 |---|---|---|
-| ![runout](_screenshots/runout.png) | ![export](_screenshots/export.png) | ![Settings](_screenshots/sertings.png) |
+| ![runout](_screenshots/runout.png) | ![export](_screenshots/export.png) | ![Settings](_screenshots/settings.png) |
 
 
 --- 
