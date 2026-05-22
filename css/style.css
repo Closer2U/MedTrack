@@ -343,7 +343,19 @@ main {
 }
 .days-left { font-size: .75rem; color: var(--text-2); }
 
-.sidebar-btn-row { margin-top: .75rem; }
+/*V6-*/
+.sidebar-btn-row { margin-top: .75rem; 
+  display    : flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-shrink: 0;}
+
+.sidebar-next-appt {
+  font-size  : .75rem;
+  color      : var(--text-muted);
+  margin-left: auto;
+}
+/*-V6*/
 
 /* ══════════════════════════════
    TAGS / BADGES
