@@ -14,11 +14,15 @@ It runs entirely in the browser. No account, no server, no data leaves your devi
 
 | Calendar | Day log | Medications |
 |---|---|---|
-| ![Calendar](_screenshots/calendar.png) | ![Day detail](_screenshots/day-detail.png) | ![Medications](_screenshots/medications.png) |
+| ![Calendar](_screenshots/calendar.png) | ![Day detail](_screenshots/day.png) | ![Medications](_screenshots/medications.png) |
 
-| Formulary | Doctors & appointments | Refill history |
+| Meds Database | Doctors & appointments/vacations | Refill history |
 |---|---|---|
-| ![Formulary](_screenshots/formulary.png) | ![Doctors](_screenshots/doctors.png) | ![Refills](_screenshots/refills.png) |
+| ![Formulary](_screenshots/database.png) | ![Doctors](_screenshots/doctors.png) | ![Refills](_screenshots/Refills.png) |
+
+| Run-Out view | Export modal | · |
+|---|---|---|
+| ![runout](_screenshots/runout.png) | ![export](_screenshots/export.png) | · |
 
 
 --- 
