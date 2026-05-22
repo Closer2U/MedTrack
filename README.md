@@ -4,6 +4,8 @@ A personal medication management app for people who take multiple medications an
 
 It runs entirely in the browser. No account, no server, no data leaves your device.
 
+[Here, take a look :palm_up_hand:](https://closer2u.github.io/MedTrack/)
+
 ***
 
 > *Screenshots show representative mock data in PWA/standalone mode.*
