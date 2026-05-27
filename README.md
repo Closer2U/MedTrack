@@ -10,20 +10,19 @@ It runs entirely in the browser. No account, no server, no data leaves your devi
 
 > *Screenshots show representative mock data in PWA/standalone mode.*
 
-🚧 **TODO** create screenshots 
+<div align="center" style="display:flex;flex-direction:column;justify-content:center; align-items:flex-start; flex-wrap: wrap;">
 
-| Calendar | Day log | Medications |
-|---|---|---|
-| ![Calendar](_screenshots/calendar.png) | ![Day detail](_screenshots/day.png) | ![Medications](_screenshots/medications.png) |
+   <img style="flex: 1 1 25%" src="_screenshots/calendar.png" width=230 ></img> 
+   <img style="flex: 1 1 25%" src="_screenshots/day.png" width=230></img>
+   <img style="flex: 1 1 25%" src="_screenshots/runout.png" width=230></img>
+   <img style="flex: 1 1 25%" src="_screenshots/medications.png" width=230></img>
+   <img style="flex: 1 1 25%" src="_screenshots/database.png" width=230></img>
+   <img style="flex: 1 1 25%" src="_screenshots/Refills.png" width=230></img>
+   <img style="flex: 1 1 25%" src="_screenshots/doctors.png" width=230 ></img>
+   <img style="flex: 1 1 25%" src="_screenshots/settings.png" width=230></img>
+   <img style="flex: 1 1 25%" src="_screenshots/export.png" width=230></img>
 
-| Meds Database | Doctors & appointments/vacations | Refill history |
-|---|---|---|
-| ![Formulary](_screenshots/database.png) | ![Doctors](_screenshots/doctors.png) | ![Refills](_screenshots/Refills.png) |
-
-| Run-Out view | Export modal | Settings |
-|---|---|---|
-| ![runout](_screenshots/runout.png) | ![export](_screenshots/export.png) | ![Settings](_screenshots/settings.png) |
-
+</div>
 
 --- 
 
