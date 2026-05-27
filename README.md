@@ -278,13 +278,13 @@ The code has been tested by a human, but it has not undergone formal security re
 
 Use at your own discretion.
 
-<p align="center">
+<div align="center">
 
-```shell
+<pre align="center">
 
 ╭┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╮
 ·  ꜱᴛᴀʏ ꜱᴀꜰᴇ ᴀɴᴅ ᴡᴇʟʟ ꜱᴛᴏᴄᴋᴇᴅ  ·
 ╰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╯
+</pre>
 
-```
-</p>
+</div>
